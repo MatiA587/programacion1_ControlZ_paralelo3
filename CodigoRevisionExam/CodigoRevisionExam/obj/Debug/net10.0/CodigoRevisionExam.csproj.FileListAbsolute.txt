@@ -1,0 +1,14 @@
+C:\Users\TUF A15\source\repos\CodigoRevisionExam\CodigoRevisionExam\bin\Debug\net10.0\CodigoRevisionExam.exe
+C:\Users\TUF A15\source\repos\CodigoRevisionExam\CodigoRevisionExam\bin\Debug\net10.0\CodigoRevisionExam.deps.json
+C:\Users\TUF A15\source\repos\CodigoRevisionExam\CodigoRevisionExam\bin\Debug\net10.0\CodigoRevisionExam.runtimeconfig.json
+C:\Users\TUF A15\source\repos\CodigoRevisionExam\CodigoRevisionExam\bin\Debug\net10.0\CodigoRevisionExam.dll
+C:\Users\TUF A15\source\repos\CodigoRevisionExam\CodigoRevisionExam\bin\Debug\net10.0\CodigoRevisionExam.pdb
+C:\Users\TUF A15\source\repos\CodigoRevisionExam\CodigoRevisionExam\obj\Debug\net10.0\CodigoRevisionExam.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\TUF A15\source\repos\CodigoRevisionExam\CodigoRevisionExam\obj\Debug\net10.0\CodigoRevisionExam.AssemblyInfoInputs.cache
+C:\Users\TUF A15\source\repos\CodigoRevisionExam\CodigoRevisionExam\obj\Debug\net10.0\CodigoRevisionExam.AssemblyInfo.cs
+C:\Users\TUF A15\source\repos\CodigoRevisionExam\CodigoRevisionExam\obj\Debug\net10.0\CodigoRevisionExam.csproj.CoreCompileInputs.cache
+C:\Users\TUF A15\source\repos\CodigoRevisionExam\CodigoRevisionExam\obj\Debug\net10.0\CodigoRevisionExam.dll
+C:\Users\TUF A15\source\repos\CodigoRevisionExam\CodigoRevisionExam\obj\Debug\net10.0\refint\CodigoRevisionExam.dll
+C:\Users\TUF A15\source\repos\CodigoRevisionExam\CodigoRevisionExam\obj\Debug\net10.0\CodigoRevisionExam.pdb
+C:\Users\TUF A15\source\repos\CodigoRevisionExam\CodigoRevisionExam\obj\Debug\net10.0\CodigoRevisionExam.genruntimeconfig.cache
+C:\Users\TUF A15\source\repos\CodigoRevisionExam\CodigoRevisionExam\obj\Debug\net10.0\ref\CodigoRevisionExam.dll
