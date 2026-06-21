@@ -1,0 +1,176 @@
+using System;
+using System.Windows.Forms;
+
+namespace CorreccionExam
+{
+    public partial class FormMain : Form
+    {
+        // Objeto que administrará el examen
+        private Docente docenteAsignado = new Docente();
+
+        public FormMain()
+        {
+            InitializeComponent();
+        }
+
+        private void FormMain_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        // BOTÓN REGISTRAR EXAMEN
+        private void btnRegistrarExamen_Click(object sender, EventArgs e)
+        {
+            if (!int.TryParse(txtCantidadPreguntas.Text, out int cantidad) ||
+                cantidad <= 0)
+            {
+                MessageBox.Show(
+                    "Ingrese una cantidad válida de preguntas.");
+                return;
+            }
+
+            Examen nuevoExamen = new Examen();
+
+            string[] respuestas =
+                txtRespuestasExamen.Text.Split(',');
+
+            if (respuestas.Length != cantidad)
+            {
+                MessageBox.Show(
+                    $"Debe ingresar exactamente {cantidad} respuestas separadas por comas.");
+                return;
+            }
+
+            for (int i = 0; i < cantidad; i++)
+            {
+                nuevoExamen.AgregarPregunta(
+                    new Pregunta(
+                        i + 1,
+                        respuestas[i].Trim()));
+            }
+
+            docenteAsignado.RegistrarExamen(nuevoExamen);
+
+            MessageBox.Show("Examen registrado con éxito.");
+        }
+
+        // BOTÓN CALIFICAR
+        private void btnCalificar_Click(object sender, EventArgs e)
+        {
+            if (docenteAsignado.ExamenActivo == null)
+            {
+                MessageBox.Show(
+                    "Primero debe registrar un examen.");
+                return;
+            }
+
+            string nombreAlumno =
+                txtNombreAlumno.Text.Trim();
+
+            if (string.IsNullOrEmpty(nombreAlumno))
+            {
+                MessageBox.Show(
+                    "Ingrese el nombre del estudiante.");
+                return;
+            }
+
+            Estudiante estudiante =
+                new Estudiante(nombreAlumno);
+
+            string[] respuestasAlumno =
+                txtRespuestasAlumno.Text.Split(',');
+
+            if (respuestasAlumno.Length !=
+                docenteAsignado.ExamenActivo.ListaPreguntas.Count)
+            {
+                MessageBox.Show(
+                    $"El alumno debe tener {docenteAsignado.ExamenActivo.ListaPreguntas.Count} respuestas.");
+                return;
+            }
+
+            for (int i = 0; i < respuestasAlumno.Length; i++)
+            {
+                estudiante.RespuestasAlumno.Add(
+                    i + 1,
+                    respuestasAlumno[i].Trim());
+            }
+
+            Correccion reporte =
+                docenteAsignado.CalificarEstudiante(estudiante);
+
+            lblResultadoEstudiante.Text =
+                $"Estudiante: {estudiante.Nombre}";
+
+            lblCorrectas.Text =
+                $"Correctas: {reporte.RespuestasCorrectas}";
+
+            lblIncorrectas.Text =
+                $"Incorrectas: {reporte.RespuestasIncorrectas}";
+
+            lblNota.Text =
+                $"Nota: {reporte.NotaFinal:F2}";
+
+            lstErrores.Items.Clear();
+
+            if (reporte.DetallesErrores.Count == 0)
+            {
+                lstErrores.Items.Add("¡Examen perfecto!");
+            }
+            else
+            {
+                foreach (string error in reporte.DetallesErrores)
+                {
+                    lstErrores.Items.Add(error);
+                }
+            }
+        }
+
+        // BOTÓN MOSTRAR RESPUESTAS
+        private void btnMostrarRespuestas_Click(object sender, EventArgs e)
+        {
+            if (docenteAsignado.ExamenActivo == null)
+            {
+                MessageBox.Show(
+                    "No hay ningún examen registrado.");
+                return;
+            }
+
+            lstErrores.Items.Clear();
+
+            lstErrores.Items.Add(
+                "=== RESPUESTAS CORRECTAS ===");
+
+            foreach (Pregunta pregunta
+                     in docenteAsignado.ExamenActivo.ListaPreguntas)
+            {
+                lstErrores.Items.Add(
+                    $"Pregunta {pregunta.Numero}: {pregunta.RespuestaCorrecta}");
+            }
+        }
+
+        private void txtCantidadPreguntas_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtRespuestasAlumno_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblResultadoEstudiante_Click(object sender, EventArgs e)
+        {
+
+        }
+    }
+}
